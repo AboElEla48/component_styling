@@ -2,6 +2,23 @@
   text-align: center;
 }
 
+.txtRed {
+  color: red;
+}
+
+.txtBold {
+  font-weight: bold;
+}
+
+.txtGreen {
+  color: green
+}
+
+.txtNormal {
+  font-weight: normal;
+  textItalic: true;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

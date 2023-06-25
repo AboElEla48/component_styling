@@ -8,6 +8,8 @@ class App extends Component {
   colors = ['green', 'red'];
   colorIndex = 0;
 
+  classStyles = ['txtRed txtBold', 'txtGreen txtNormal'];
+
   state = {
     myStyle: {
       border: '3px solid black',
@@ -15,7 +17,9 @@ class App extends Component {
       borderColor: 'black',
       color: 'white',
       backgroundColor: 'green'
-    }
+    },
+    paragraphStyles: { name: 'txtRed txtBold'}
+
   };
 
   /** Log messages to console */
@@ -33,21 +37,34 @@ class App extends Component {
     this.colorIndex = ++this.colorIndex % 2;
     this.logMSG(this.colorIndex);
     let myStyle = {...this.state.myStyle};
+    let paragraphStyles= {...this.state.paragraphStyles};
 
     myStyle.backgroundColor = this.colors[this.colorIndex];
-    this.logMSG('New Style: ', myStyle);
+    paragraphStyles.name = this.classStyles[this.colorIndex];
+
+    this.logMSG('New Button Style: ', myStyle);
     this.setState({myStyle});
+
+    this.logMSG('New Paragraph Style: ', paragraphStyles.name);
+    this.setState({paragraphStyles});
   }
 
   render (){
-    this.logMSG('Render style: ', this.state.myStyle);
     let btnStyle = {...this.state.myStyle};
+    let paragraphStyle = {...this.state.paragraphStyles};
+
+    this.logMSG('Render Button style: ', btnStyle);
+    this.logMSG('Render Paragraph style: ', paragraphStyle.name);
 
     return (
       <div className="App">
         <button
           style={btnStyle}
-          onClick= {this.buttonClickHandler}> Turn to Red!</button>
+          onClick= {this.buttonClickHandler}> Toggle Styles!</button>
+
+        <p className={paragraphStyle.name}>
+          This is some text to change style from CSS.
+        </p>
       </div>
     );
   }
