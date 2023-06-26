@@ -1,11 +1,21 @@
 
 import './App.css';
 import React, {Component} from 'react';
+import Radium from 'radium';
 
 const LOG_TAG = 'App: ';
 
 class App extends Component {
   colors = ['green', 'red'];
+  hoverColors= [
+    {
+      backgroundColor: 'lightgreen',
+      color: 'white'
+    },
+    {
+      backgroundColor: 'lightred',
+      color: 'black'
+    }];
   colorIndex = 0;
 
   classStyles = ['txtRed txtBold', 'txtGreen txtNormal'];
@@ -16,7 +26,11 @@ class App extends Component {
       marginTop: '5px',
       borderColor: 'black',
       color: 'white',
-      backgroundColor: 'green'
+      backgroundColor: 'green',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     },
     paragraphStyles: { name: 'txtRed txtBold'}
 
@@ -40,6 +54,7 @@ class App extends Component {
     let paragraphStyles= {...this.state.paragraphStyles};
 
     myStyle.backgroundColor = this.colors[this.colorIndex];
+    myStyle[':hover'] = this.hoverColors[this.colorIndex];
     paragraphStyles.name = this.classStyles[this.colorIndex];
 
     this.logMSG('New Button Style: ', myStyle);
@@ -70,4 +85,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
