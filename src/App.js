@@ -13,7 +13,7 @@ class App extends Component {
       color: 'white'
     },
     {
-      backgroundColor: 'lightred',
+      backgroundColor: 'salmon',
       color: 'black'
     }];
   colorIndex = 0;
